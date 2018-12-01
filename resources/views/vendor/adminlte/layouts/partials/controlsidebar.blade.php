@@ -9,7 +9,7 @@
     <div class="tab-content">
         <!-- Home tab content -->
         <div class="tab-pane active" id="control-sidebar-home-tab">
-            <h3 class="control-sidebar-heading">ddd{{ trans('adminlte_lang::message.recentactivity') }}</h3>
+            <h3 class="control-sidebar-heading">{{ trans('adminlte_lang::message.recentactivity') }}</h3>
             <ul class='control-sidebar-menu'>
                 <li>
                     <a href='javascript::;'>
