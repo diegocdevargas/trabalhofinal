@@ -16,7 +16,7 @@ class CreateReceitasTable extends Migration
         Schema::create('receitas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 20);
-            $table->string('tipo', 10);
+            $table->string('prioridade', 10);
             $table->decimal('valor', 10, 2);
             $table->date('data');
             $table->string('info_adic', 50);

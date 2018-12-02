@@ -17,10 +17,10 @@
             </div>
 
             <div class="form-group">
-                {!! Form::label('tipo', 'Tipo:') !!}
-                {!! Form::select('tipo',
-                    array('R' => 'Receita', 'D' => 'Despesas'),
-                    $receita->tipo,
+                {!! Form::label('prioridade', 'Prioridade:') !!}
+                {!! Form::select('prioridade',
+                    array('A' => 'Alta', 'M' => 'Média', 'B' => 'Baixa'),
+                    $receita->prioridade,
                     ['class'=>'form-control']) !!}
             </div>
 

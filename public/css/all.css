@@ -7856,7 +7856,7 @@
   box-shadow: none;
   background-color: #374850;
   border: 1px solid transparent;
-  height: 35px;
+  /*height: 35px;*/
 }
 .skin-blue .sidebar-form input[type="text"] {
   color: #666;
@@ -17637,7 +17637,7 @@ input[type="search"] {
   input[type="time"],
   input[type="datetime-local"],
   input[type="month"] {
-    line-height: 34px;
+/*    line-height: 34px;*/
   }
   input[type="date"].input-sm,
   input[type="time"].input-sm,
@@ -21830,3 +21830,5 @@ button.toast-close-button {
 /*# sourceMappingURL=toastr.css.map */
 
 /*# sourceMappingURL=all.css.map */
+
+
