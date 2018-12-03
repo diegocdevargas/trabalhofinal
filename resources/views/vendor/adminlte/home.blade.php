@@ -13,7 +13,8 @@
 					<div class="panel-heading">Home</div>
 
 					<div class="panel-body">
-						{{ trans('adminlte_lang::message.logged') }}
+						{{-- {{ trans('adminlte_lang::message.logged') }} --}}
+						Seja bem vindo {{ Auth::user()->name }}!
 					</div>
 				</div>
 			</div>

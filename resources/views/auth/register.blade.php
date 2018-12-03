@@ -1,77 +1,91 @@
-@extends('layouts.app')
+@extends('adminlte::layouts.auth')
+
+@section('htmlheader_title')
+    Register
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+<body class="hold-transition register-page">
+    <div id="app">
+        <div class="register-box">
+            <div class="register-logo">
+                <a href="#">Controle<b>Financeiro</b></a>
             </div>
-        </div>
+
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <div class="register-box-body">
+                <p class="login-box-msg">Registrar-se</p>
+                <form action="{{ url('/register') }}" method="post">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" placeholder="Nome Completo" name="name" value="{{ old('name') }}"/>
+                        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="email" class="form-control" placeholder="Email" name="email" value="{{ old('email') }}"/>
+                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="Senha" name="password"/>
+                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback">
+                        <input type="password" class="form-control" placeholder="Confimar Senha" name="password_confirmation"/>
+                        <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <label>
+                                <div class="checkbox_register icheck">
+                                    <label>
+                                        <input type="checkbox" name="terms">
+                                    </label>
+                                </div>
+                            </label>
+                        </div><!-- /.col -->
+                        <div class="col-xs-6">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-block btn-flat" data-toggle="modal" data-target="#termsModal">Aceito os termos</button>
+                            </div>
+                        </div><!-- /.col -->
+                        <div class="col-xs-4 col-xs-push-1">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Registrar</button>
+                        </div><!-- /.col -->
+                    </div>
+                </form>
+
+               {{--  @include('adminlte::auth.partials.social_login') --}}
+
+                <a href="{{ url('/login') }}" class="text-center">Já tenho login</a>
+            </div><!-- /.form-box -->
+        </div><!-- /.register-box -->
     </div>
-</div>
+
+    @include('adminlte::layouts.partials.scripts_auth')
+
+    @include('adminlte::auth.terms')
+
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
+
+</body>
+
 @endsection

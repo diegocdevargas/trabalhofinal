@@ -1,32 +1,9 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
-
 @extends('adminlte::layouts.app')
 
 @section('htmlheader_title')
     {{ trans('adminlte_lang::message.home') }}
 @endsection
+
 
 @section('main-content')
     <div class="container-fluid spark-screen">
@@ -36,11 +13,11 @@
                     <div class="panel-heading">Home</div>
 
                     <div class="panel-body">
-                        {{ trans('adminlte_lang::message.logged') }}
+                        {{-- {{ trans('adminlte_lang::message.logged') }} --}}
+                        Seja bem vindo {{ Auth::user()->name }}!
                     </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
-

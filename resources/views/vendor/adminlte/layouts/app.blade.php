@@ -58,6 +58,6 @@ desired effect
 @section('scripts')
     @include('adminlte::layouts.partials.scripts')
 @show
-
+@yield('dyn_scripts')
 </body>
 </html>

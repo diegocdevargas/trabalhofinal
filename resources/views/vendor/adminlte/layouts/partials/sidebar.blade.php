@@ -19,14 +19,14 @@
         @endif
 
         <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
+        {{-- <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
                 <input type="text" name="q" class="form-control" placeholder="{{ trans('adminlte_lang::message.search') }}..."/>
               <span class="input-group-btn">
                 <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
               </span>
             </div>
-        </form>
+        </form> --}}
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->
@@ -36,17 +36,24 @@
             <li class="active"><a href="{{ url('receitas/create') }}"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.home') }}</span></a></li>
             <li><a href="#"><i class='fa fa-link'></i> <span>{{ trans('adminlte_lang::message.anotherlink') }}</span></a></li>-->
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>{{-- {{ trans('adminlte_lang::message.multilevel') }} --}}Receitas</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-money'></i> <span>{{-- {{ trans('adminlte_lang::message.multilevel') }} --}}Receitas</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="receitas">Receitas Normais{{-- {{ trans('adminlte_lang::message.linklevel2') }} --}}</a></li>
                     <li><a href="receitasfuturas">Receitas Futuras{{-- {{ trans('adminlte_lang::message.linklevel2') }} --}}</a></li>
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-link'></i> <span>{{-- {{ trans('adminlte_lang::message.multilevel') }} --}}Despesas</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-book'></i> <span>{{-- {{ trans('adminlte_lang::message.multilevel') }} --}}Despesas</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="despesas">Despesas Normais{{-- {{ trans('adminlte_lang::message.linklevel2') }} --}}</a></li>
                     <li><a href="despesasfuturas">Despesas Futuras{{-- {{ trans('adminlte_lang::message.linklevel2') }} --}}</a></li>
+                </ul>
+            </li>
+             <li class="treeview">
+                <a href="#"><i class='fa fa-user'></i> <span>{{-- {{ trans('adminlte_lang::message.multilevel') }} --}}Perfis</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="perfis">Perfil Receitas {{-- {{ trans('adminlte_lang::message.linklevel2') }} --}}</a></li>
+                    <li><a href="perfisdespesas">Perfil Despesas{{-- {{ trans('adminlte_lang::message.linklevel2') }} --}}</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

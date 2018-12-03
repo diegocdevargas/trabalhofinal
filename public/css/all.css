@@ -7849,12 +7849,12 @@
 .skin-blue .sidebar-form {
   border-radius: 3px;
   border: 1px solid #374850;
-  margin: 10px 10px;
+  margin-bottom: 10px;
 }
 .skin-blue .sidebar-form input[type="text"],
 .skin-blue .sidebar-form .btn {
   box-shadow: none;
-  background-color: #374850;
+
   border: 1px solid transparent;
   /*height: 35px;*/
 }
@@ -21831,4 +21831,18 @@ button.toast-close-button {
 
 /*# sourceMappingURL=all.css.map */
 
+.box-body .table li{
+  list-style-type: none;
+}
 
+.receita-container{
+  margin-top: 10px;
+}
+
+.add_field_button{
+  margin-top: -5px;
+}
+
+.remove_field{
+  margin-left: 5px;
+}
