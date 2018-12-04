@@ -2,57 +2,36 @@
 
 @section('content')
     <div class="container-fluid">
-        <h3>Editando Receita Futura 
-{{--         @if ($receita->tipo == 'R')
-            <td>Receita</td>
-        @elseif ($receita->tipo == 'D')
-            <td>receita</td>
-        @endif  --}}
-        {{ $receita_futura->nome }}</h3>
+        <h3>Editando Receita Futura</h3>
 
-        {!! Form::open(['route' => ["receitasfuturas.update", $receita_futura->id], 'method'=>'put']) !!}
+        @if ($errors->any())
+            <ul class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+
+        {!! Form::open(['route' => ['receitasfuturas.update', $receita_futura->id], 'method'=>'put']) !!}
 
             <div class="form-group">
-                {!! Form::label('nome', 'Nome:') !!}
-                {!! Form::text('nome', $receita_futura->nome, ['class'=>'form-control']) !!}
+                {!! Form::label('receita_id', 'Receita:') !!}
+                {!! Form::select('receita_id', \App\Receita::orderBy('nome')->pluck('nome', 'id')->toArray(), $receita_futura->receita_id, ['class'=>'form-control']) !!}
+            </div>
+ 
+            <div class="form-group">
+                {!! Form::label('data_efetiva', 'Data Efetiva:') !!}
+                {!! Form::date('data_efetiva', $receita_futura->data_efetiva, ['class'=>'form-control']) !!}
             </div>
 
             <div class="form-group">
-                {!! Form::label('valor', 'Valor') !!}
-                {!! Form::number('valor', $receita_futura->valor, ['class'=>'form-control']) !!}
+                {!! Form::label('data_finalizacao', 'Data Finalização:') !!}
+                {!! Form::date('data_finalizacao', $receita_futura->data_finalizacao, ['class'=>'form-control']) !!}
             </div>
 
             <div class="form-group">
-                {!! Form::label('prioridade', 'Prioridade:') !!}
-                {!! Form::select('prioridade',
-                    array('A' => 'Alta', 'M' => 'Média', 'B' => 'Baixa'),
-                    $receita_futura->prioridade,
-                    ['class'=>'form-control']) !!}
+                {!! Form::submit('Enviar', ['class'=>'btn btn-primary']) !!}
             </div>
-
-            <div class="form-group">
-                {!! Form::label('data', 'Data:') !!}
-                {!! Form::date('data',
-                $receita_futura->data,
-                ['class'=>'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::label('info_adc', 'Informação Adicional:') !!}
-                {!! Form::textarea('info_adc', $receita_futura->info_adic, ['class'=>'form-control']) !!}
-            </div>
-
-            <div class="form-group">
-                {!! Form::submit('Editar receita Futura', ['class'=>'btn btn-primary']) !!}
-            </div>
-
-            @if ($errors->any())
-                <ul class="alert alert-danger">
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            @endif
 
         {!! Form::close() !!}
     </div>

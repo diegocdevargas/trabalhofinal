@@ -12,9 +12,9 @@ class DespesasController extends Controller
     public function index(Request $filtro) {
         $filtragem = $filtro->get('filtragem');
         if($filtragem == null)
-            $despesas = Despesa::orderBy('nome')->paginate(5);
+            $despesas = Despesa::orderBy('nome')->paginate(2);
         else 
-            $despesas = Despesa::where('nome', 'like', '%'.$filtragem.'%')->orderBy("nome")->paginate(20);
+            $despesas = Despesa::where('nome', 'like', '%'.$filtragem.'%')->orderBy("nome")->paginate(4);
 
         return view('despesas.index', ['despesas'=>$despesas]);
     }

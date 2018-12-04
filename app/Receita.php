@@ -11,5 +11,9 @@ class Receita extends Model
     public function perfils(){
     	return $this->hasMany('App\Perfil');
     }
+
+    public function receitas_futuras(){
+    	return $this->hasMany('App\ReceitaFutura');
+    }
 }
 

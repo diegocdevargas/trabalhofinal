@@ -12,9 +12,9 @@ class ReceitasController extends Controller
     public function index(Request $filtro) {
         $filtragem = $filtro->get('filtragem');
         if($filtragem == null)
-            $receitas = Receita::orderBy('nome')->paginate(5);
+            $receitas = Receita::orderBy('nome')->paginate(2);
         else 
-            $receitas = Receita::where('nome', 'like', '%'.$filtragem.'%')->orderBy("nome")->paginate(20);
+            $receitas = Receita::where('nome', 'like', '%'.$filtragem.'%')->orderBy("nome")->paginate(5);
 
         return view('receitas.index', ['receitas'=>$receitas]);
     }

@@ -11,4 +11,8 @@ class Despesa extends Model
     public function perfils(){
     	return $this->hasMany('App\Perfil');
     }
+
+    public function despesas_futuras(){
+    	return $this->hasMany('App\DespesaFutura');
+    }
 }

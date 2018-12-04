@@ -19,7 +19,7 @@ class CreateReceitasTable extends Migration
             $table->string('prioridade', 10);
             $table->decimal('valor', 10, 2);
             $table->date('data');
-            $table->string('info_adic', 50);
+            $table->string('info_adic', 50)->nullable();
             $table->timestamps();
         });
     }

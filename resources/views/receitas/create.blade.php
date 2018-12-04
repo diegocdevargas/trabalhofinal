@@ -36,7 +36,7 @@
             </div>
 
             <div class="form-group">
-                {!! Form::submit('Criar despesa', ['class'=>'btn btn-primary']) !!}
+                {!! Form::submit('Criar receita', ['class'=>'btn btn-primary']) !!}
             </div>
 
             @if ($errors->any())

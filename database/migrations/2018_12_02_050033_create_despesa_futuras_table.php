@@ -15,11 +15,10 @@ class CreateDespesaFuturasTable extends Migration
     {
         Schema::create('despesa_futuras', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nome', 20);
-            $table->string('prioridade', 10);
-            $table->decimal('valor', 10, 2);
-            $table->date('data');
-            $table->string('info_adic', 50);
+            $table->date('data_efetiva')->nullable();
+            $table->date('data_finalizacao')->nullable();
+            $table->integer('despesa_id')->unsigned();
+            $table->foreign('despesa_id')->references('id')->on('despesas');
             $table->timestamps();
         });
     }

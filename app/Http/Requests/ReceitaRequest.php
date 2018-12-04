@@ -24,7 +24,10 @@ class ReceitaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nome' => 'required|min:5',
+            'prioridade' => 'required',
+            'valor' => 'required|numeric',
+            'data' => 'required',
         ];
     }
 }

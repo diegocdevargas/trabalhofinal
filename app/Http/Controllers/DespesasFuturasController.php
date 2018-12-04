@@ -9,14 +9,16 @@ use App\Http\Requests\DespesaFuturaRequest;
 
 class DespesasFuturasController extends Controller
 {
-    public function index(Request $filtro) {
-        $filtragem = $filtro->get('filtragem');
-        if($filtragem == null)
-            $despesa_futura = DespesaFutura::orderBy('nome')->paginate(5);
-        else 
-            $despesa_futura = DespesaFutura::where('nome', 'like', '%'.$filtragem.'%')->orderBy("nome")->paginate(20);
+    public function index() {
+        // $filtragem = $filtro->get('filtragem');
+        // if($filtragem == null)
+        //     $despesa_futura = DespesaFutura::orderBy('data_efetiva')->paginate(5);
+        // else 
+        //     $despesa_futura = DespesaFutura::where('data_efetiva', 'like', '%'.$filtragem.'%')->orderBy("data_efetiva")->paginate(20);
 
-        return view('despesasfuturas.index', ['despesa_futura'=>$despesa_futura]);
+        // return view('despesasfuturas.index', ['despesa_futura'=>$despesa_futura]);
+        $despesas_futuras = DespesaFutura::all();
+        return view('despesasfuturas.index', ['despesas_futuras'=>$despesas_futuras]);
     }
 
     public function create() {
@@ -52,13 +54,13 @@ class DespesasFuturasController extends Controller
         return redirect()->route('despesasfuturas');
     }
 
-    public function geraPdf(){
-        $despesa_futura = DespesaFutura::all();
+    // public function geraPdf(){
+    //     $despesa_futura = DespesaFutura::all();
 
-        $view = \View::make('despesasfuturas.relatorio', ['despesa_futura' => $despesa_futura]);
-        $html = $view->render();
-        $pdf = \PDF::loadHTML($html)->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');
+    //     $view = \View::make('despesasfuturas.relatorio', ['despesa_futura' => $despesa_futura]);
+    //     $html = $view->render();
+    //     $pdf = \PDF::loadHTML($html)->setPaper('a4', 'landscape')->setWarnings(false)->save('myfile.pdf');
 
-        return $pdf->download('relatatorio.pdf');
-    }
+    //     return $pdf->download('relatatorio.pdf');
+    // }
 }
